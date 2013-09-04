@@ -1,0 +1,21 @@
+{
+    "name": "kphoen/faker-service-provider",
+    "description": "Faker Service Provider for Silex",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kévin Gomez",
+            "email": "contact@kevingomez.fr",
+            "homepage": "http://www.kevingomez.fr/"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "fzaninotto/faker": "~1.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "KPhoen": "src/"
+        }
+    }
+}
