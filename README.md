@@ -7,14 +7,12 @@ A [Faker](https://github.com/fzaninotto/Faker) service provider for [Silex](http
 to use the most suited locale for the request.
 
 
-## Install
-
-Install Silex using [Composer](http://getcomposer.org/).
+## Installation
 
 Install the FakerServiceProvider adding `kphoen/faker-service-provider` to your composer.json or from CLI:
 
 ```
-$ php composer.phar require kphoen/faker-service-provider:dev-master
+$ php composer.phar require 'kphoen/faker-service-provider:~1.0'
 ```
 
 
@@ -42,7 +40,7 @@ $app->register(new FakerServiceProvider('\Acme\Faker\Factory', $guessLocale = fa
 ));
 ```
 
-From PHP
+From PHP:
 ```php
 <?php
 
@@ -51,7 +49,7 @@ $app->get('/hello', function() use ($app) {
 });
 ```
 
-From [Twig](http://twig.sensiolabs.org/)
+From [Twig](http://twig.sensiolabs.org/):
 ```html
 <!DOCTYPE html>
 <html>
