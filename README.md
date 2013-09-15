@@ -1,4 +1,4 @@
-FakerServiceProvider
+FakerServiceProvider [![Build Status](https://travis-ci.org/K-Phoen/FakerServiceProvider.png?branch=master)](https://travis-ci.org/K-Phoen/FakerServiceProvider)
 ====================
 
 A [Faker](https://github.com/fzaninotto/Faker) service provider for [Silex](http://silex.sensiolabs.org/).
