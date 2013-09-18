@@ -6,6 +6,19 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class FakerServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @expectedException           InvalidArgumentException
+     * @expectedExceptionMessage    Identifier "faker" is not defined.
+     */
+    public function testRegisterDoesNotCreatesServicesWithGuessEnabled()
+    {
+        $serviceProvider = new FakerServiceProvider($factoryClass = '\Faker\Factory', $guessLocale = true);
+        $application = new Application();
+
+        $serviceProvider->register($application);
+        $application['faker'];
+    }
+
     public function testBootCreatesServicesWithGuessEnabled()
     {
         $serviceProvider = new FakerServiceProvider();
@@ -26,16 +39,29 @@ class FakerServiceProviderTest extends \PHPUnit_Framework_TestCase
         $this->checkProvidersLocale($application['faker']->getProviders(), 'en_US');
     }
 
-    public function testBootCreatesServicesWithGuessDisabled()
+    public function testRegisterCreatesServicesWithGuessDisabled()
     {
         $serviceProvider = new FakerServiceProvider($factoryClass = '\Faker\Factory', $guessLocale = false);
         $application = new Application();
         $application['locale'] = 'fr_FR';
 
-        $serviceProvider->boot($application);
+        $serviceProvider->register($application);
 
         $this->assertInstanceOf('\Faker\Generator', $application['faker']);
         $this->checkProvidersLocale($application['faker']->getProviders(), 'fr_FR');
+    }
+
+    /**
+     * @expectedException           InvalidArgumentException
+     * @expectedExceptionMessage    Identifier "faker" is not defined.
+     */
+    public function testBootDoesNotCreatesServicesWithGuessDisabled()
+    {
+        $serviceProvider = new FakerServiceProvider($factoryClass = '\Faker\Factory', $guessLocale = false);
+        $application = new Application();
+
+        $serviceProvider->boot($application);
+        $application['faker'];
     }
 
     protected function checkProvidersLocale(array $providers, $expectedLocale)

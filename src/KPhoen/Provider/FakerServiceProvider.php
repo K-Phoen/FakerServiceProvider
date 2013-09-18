@@ -33,6 +33,9 @@ class FakerServiceProvider implements ServiceProviderInterface
 
     public function register(Application $app)
     {
+        if (!$this->guessLocale) {
+            $this->injectService($app);
+        }
     }
 
     /**
@@ -42,6 +45,13 @@ class FakerServiceProvider implements ServiceProviderInterface
      * @param Application $app The current application.
      */
     public function boot(Application $app)
+    {
+        if ($this->guessLocale) {
+            $this->injectService($app);
+        }
+    }
+
+    protected function injectService(Application $app)
     {
         $app['faker'] = $app->share(function($app) {
             if ($this->guessLocale) {
