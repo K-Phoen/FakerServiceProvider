@@ -6,6 +6,11 @@ A [Faker](https://github.com/fzaninotto/Faker) service provider for [Silex](http
 **N.B**: this provider is *locale aware*. It will automatically configure Faker
 to use the most suited locale for the request.
 
+## Status
+
+This project is **DEPRECATED** and should NOT be used. 
+
+If someone magically appears and wants to maintain this project, I'll gladly give access to this repository.
 
 ## Usage
 
